@@ -1,7 +1,8 @@
 'use client';
 
 import { useState } from 'react';
-import { Container, Typography, Box, Button, Grid, Paper } from '@mui/material';
+import { Container, Typography, Box, Button } from '@mui/material';
+import { Grid } from '@mui/material';
 import { Header } from '../components/common/Header';
 import { Footer } from '../components/common/Footer';
 import { Loading } from '../components/common/Loading';
