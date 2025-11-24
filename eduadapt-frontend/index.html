@@ -1,13 +1,306 @@
-<!doctype html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>eduadapt-frontend</title>
-  </head>
-  <body>
-    <div id="root"></div>
-    <script type="module" src="/src/main.tsx"></script>
-  </body>
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EduAdapt: Plateforme d'Apprentissage Personnalisée par IA</title>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&family=Google+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/eduadapt-frontend/src/index.css">
+</head>
+<body>
+    <div class="poster-container">
+        
+        <div class="bg-shape shape-1"></div>
+        <div class="bg-shape shape-2"></div>
+        
+        
+        <div class="header">
+            <div class="logo">
+                <span class="material-icons logo-icon">school</span>
+                <span class="logo-text">EduAdapt</span>
+            </div>
+            <p class="tagline">Transformez n'importe quel contenu éducatif en expérience d'apprentissage interactive et personnalisée grâce à l'intelligence artificielle</p>
+        </div>
+        
+        
+        <div class="section">
+            <h2 class="section-title">
+                <span class="material-icons">lightbulb</span>
+                Concept
+            </h2>
+            <div class="section-content">
+                <p>EduAdapt transforme n'importe quel contenu éducatif (texte, PDF) en expérience d'apprentissage interactive, incluant automatiquement :</p>
+                <ul style="margin-top: 10px; margin-left: 20px;">
+                    <li>Quiz générés par IA</li>
+                    <li>Flashcards interactives</li>
+                    <li>Résumés personnalisés</li>
+                    <li>Parcours adaptés au niveau de chaque étudiant</li>
+                </ul>
+                <p style="margin-top: 10px;">L'application utilise des algorithmes adaptatifs pour ajuster la difficulté et propose des analyses d'apprentissage détaillées.</p>
+            </div>
+        </div>
+        
+        
+        <div class="section">
+            <h2 class="section-title">
+                <span class="material-icons">dashboard</span>
+                Dashboard Étudiant
+            </h2>
+            <div class="section-content">
+                <p>Interface principale pour suivre sa progression, visualiser ses accomplissements et recevoir des recommandations personnalisées.</p>
+                
+                <div class="dashboard-preview">
+                    <div class="dashboard-header">
+                        <div class="dashboard-title">Vue d'ensemble de l'apprentissage</div>
+                    </div>
+                    <div class="dashboard-content">
+                        <div class="dashboard-chart">
+                            <span style="color: #5f6368;">Graphique de progression</span>
+                        </div>
+                        <div class="dashboard-stats">
+                            <div class="stat-card">
+                                <span class="material-icons stat-icon">emoji_events</span>
+                                <div class="stat-content">
+                                    <div class="stat-title">Badges gagnés</div>
+                                    <div class="stat-value">12</div>
+                                </div>
+                            </div>
+                            <div class="stat-card">
+                                <span class="material-icons stat-icon">trending_up</span>
+                                <div class="stat-content">
+                                    <div class="stat-title">Progression hebdomadaire</div>
+                                    <div class="stat-value">+15%</div>
+                                </div>
+                            </div>
+                            <div class="stat-card">
+                                <span class="material-icons stat-icon">schedule</span>
+                                <div class="stat-content">
+                                    <div class="stat-title">Temps d'étude</div>
+                                    <div class="stat-value">4h 23min</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        
+        <div class="section">
+            <h2 class="section-title">
+                <span class="material-icons">upload_file</span>
+                Importation & Génération IA
+            </h2>
+            <div class="section-content">
+                <p>Importez facilement vos documents et laissez l'IA transformer le contenu en matériel d'apprentissage interactif.</p>
+                
+                <div class="feature-grid">
+                    <div class="feature-card">
+                        <span class="material-icons feature-icon">picture_as_pdf</span>
+                        <div class="feature-title">Importation PDF</div>
+                        <div class="feature-desc">Téléchargez vos documents PDF pour les transformer en cours interactifs</div>
+                    </div>
+                    <div class="feature-card">
+                        <span class="material-icons feature-icon">description</span>
+                        <div class="feature-title">Importation Texte</div>
+                        <div class="feature-desc">Collez ou importez du texte pour créer instantanément des exercices</div>
+                    </div>
+                    <div class="feature-card">
+                        <span class="material-icons feature-icon">quiz</span>
+                        <div class="feature-title">Quiz IA</div>
+                        <div class="feature-desc">Générez automatiquement des questions pertinentes basées sur votre contenu</div>
+                    </div>
+                    <div class="feature-card">
+                        <span class="material-icons feature-icon">style</span>
+                        <div class="feature-title">Flashcards</div>
+                        <div class="feature-desc">Créez des cartes mémoire interactives pour renforcer la mémorisation</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+       
+        <div class="section">
+            <h2 class="section-title">
+                <span class="material-icons">route</span>
+                Parcours Adaptatif
+            </h2>
+            <div class="section-content">
+                <p>L'IA analyse vos performances et ajuste automatiquement le contenu pour optimiser votre apprentissage.</p>
+                
+                <div class="feature-grid">
+                    <div class="feature-card">
+                        <span class="material-icons feature-icon">trending_up</span>
+                        <div class="feature-title">Niveaux progressifs</div>
+                        <div class="feature-desc">Contenu adapté à votre niveau actuel avec progression graduelle</div>
+                    </div>
+                    <div class="feature-card">
+                        <span class="material-icons feature-icon">psychology</span>
+                        <div class="feature-title">Ajustement de difficulté</div>
+                        <div class="feature-desc">L'IA modifie la complexité en fonction de vos réponses</div>
+                    </div>
+                    <div class="feature-card">
+                        <span class="material-icons feature-icon">recommend</span>
+                        <div class="feature-title">Suggestions personnalisées</div>
+                        <div class="feature-desc">Recommandations basées sur vos forces et faiblesses</div>
+                    </div>
+                    <div class="feature-card">
+                        <span class="material-icons feature-icon">insights</span>
+                        <div class="feature-title">Analyse en temps réel</div>
+                        <div class="feature-desc">Suivi continu de votre progression et points d'amélioration</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        
+        <div class="section">
+            <h2 class="section-title">
+                <span class="material-icons">emoji_events</span>
+                Gamification
+            </h2>
+            <div class="section-content">
+                <p>Rendez l'apprentissage plus engageant avec des éléments de jeu qui motivent et récompensent vos efforts.</p>
+                
+                <div class="feature-grid">
+                    <div class="feature-card">
+                        <span class="material-icons feature-icon">military_tech</span>
+                        <div class="feature-title">Badges d'accomplissement</div>
+                        <div class="feature-desc">Débloquez des récompenses en atteignant vos objectifs</div>
+                    </div>
+                    <div class="feature-card">
+                        <span class="material-icons feature-icon">leaderboard</span>
+                        <div class="feature-title">Classements</div>
+                        <div class="feature-desc">Comparez vos progrès avec ceux de vos pairs</div>
+                    </div>
+                    <div class="feature-card">
+                        <span class="material-icons feature-icon">flag</span>
+                        <div class="feature-title">Objectifs personnalisés</div>
+                        <div class="feature-desc">Fixez et suivez des buts d'apprentissage adaptés à vous</div>
+                    </div>
+                    <div class="feature-card">
+                        <span class="material-icons feature-icon">local_fire_department</span>
+                        <div class="feature-title">Séries de réussite</div>
+                        <div class="feature-desc">Maintenez votre motivation avec des défis quotidiens</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Collaboration -->
+        <div class="section">
+            <h2 class="section-title">
+                <span class="material-icons">groups</span>
+                Collaboration
+            </h2>
+            <div class="section-content">
+                <p>Apprenez ensemble avec des outils de collaboration intégrés pour échanger et partager vos connaissances.</p>
+                
+                <div class="feature-grid">
+                    <div class="feature-card">
+                        <span class="material-icons feature-icon">forum</span>
+                        <div class="feature-title">Chat étudiants</div>
+                        <div class="feature-desc">Discutez avec vos camarades pour résoudre des problèmes ensemble</div>
+                    </div>
+                    <div class="feature-card">
+                        <span class="material-icons feature-icon">share</span>
+                        <div class="feature-title">Partage de contenus</div>
+                        <div class="feature-desc">Échangez facilement vos notes, quiz et ressources</div>
+                    </div>
+                    <div class="feature-card">
+                        <span class="material-icons feature-icon">group_work</span>
+                        <div class="feature-title">Projets collaboratifs</div>
+                        <div class="feature-desc">Travaillez sur des exercices en groupe pour un apprentissage enrichi</div>
+                    </div>
+                    <div class="feature-card">
+                        <span class="material-icons feature-icon">rate_review</span>
+                        <div class="feature-title">Feedback mutuel</div>
+                        <div class="feature-desc">Donnez et recevez des commentaires pour vous améliorer</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+       
+        <div class="section">
+            <h2 class="section-title">
+                <span class="material-icons">analytics</span>
+                Analytics Avancés
+            </h2>
+            <div class="section-content">
+                <p>Obtenez des informations détaillées sur votre apprentissage avec des analyses prédictives et des visualisations de données.</p>
+                
+                <div class="feature-grid">
+                    <div class="feature-card">
+                        <span class="material-icons feature-icon">timeline</span>
+                        <div class="feature-title">Courbes de progression</div>
+                        <div class="feature-desc">Visualisez votre évolution dans le temps avec des graphiques détaillés</div>
+                    </div>
+                    <div class="feature-card">
+                        <span class="material-icons feature-icon">predict</span>
+                        <div class="feature-title">Prédictions de réussite</div>
+                        <div class="feature-desc">L'IA anticipe vos performances futures pour optimiser votre parcours</div>
+                    </div>
+                    <div class="feature-card">
+                        <span class="material-icons feature-icon">psychology_alt</span>
+                        <div class="feature-title">Analyse cognitive</div>
+                        <div class="feature-desc">Comprenez vos points forts et vos axes d'amélioration</div>
+                    </div>
+                    <div class="feature-card">
+                        <span class="material-icons feature-icon">insights</span>
+                        <div class="feature-title">Tableaux de bord personnalisés</div>
+                        <div class="feature-desc">Créez des vues adaptées à vos objectifs d'apprentissage</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        
+        <div class="section">
+            <h2 class="section-title">
+                <span class="material-icons">layers</span>
+                Niveaux du Produit
+            </h2>
+            <div class="section-content">
+                <p>EduAdapt est disponible en trois niveaux pour répondre à différents besoins d'apprentissage.</p>
+                
+                <div class="levels-container">
+                    <div class="level-card">
+                        <div class="level-badge">Basique</div>
+                        <div class="level-title">Essentiel</div>
+                        <ul class="level-features">
+                            <li><span class="material-icons">check_circle</span>Support PDF/textes</li>
+                            <li><span class="material-icons">check_circle</span>3 types d'exercices</li>
+                            <li><span class="material-icons">check_circle</span>Progression linéaire</li>
+                        </ul>
+                    </div>
+                    <div class="level-card">
+                        <div class="level-badge">Intermédiaire</div>
+                        <div class="level-title">Avancé</div>
+                        <ul class="level-features">
+                            <li><span class="material-icons">check_circle</span>3 niveaux de difficulté</li>
+                            <li><span class="material-icons">check_circle</span>Recommandations personnalisées</li>
+                            <li><span class="material-icons">check_circle</span>Fonctionnalités de collaboration</li>
+                        </ul>
+                    </div>
+                    <div class="level-card">
+                        <div class="level-badge">Avancé</div>
+                        <div class="level-title">Premium</div>
+                        <ul class="level-features">
+                            <li><span class="material-icons">check_circle</span>IA adaptative (ML)</li>
+                            <li><span class="material-icons">check_circle</span>Génération automatique de cours</li>
+                            <li><span class="material-icons">check_circle</span>Analytics prédictifs</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        
+        <div class="footer">
+            <p>© 2025 EduAdapt - L'avenir de l'éducation personnalisée</p>
+        </div>
+    </div>
+</body>
 </html>
