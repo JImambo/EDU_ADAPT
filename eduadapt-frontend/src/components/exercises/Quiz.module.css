@@ -1,0 +1,7 @@
+/* Dans src/components/exercises/Quiz.module.css */
+.quizContainer {
+    background-color: #f0f0f0;
+    padding: 20px;
+    border-radius: 8px;
+    /* Mettez ici toutes vos propriétés de style */
+  }

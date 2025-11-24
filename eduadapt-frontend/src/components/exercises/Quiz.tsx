@@ -1,5 +1,5 @@
-// src/components/exercises/Quiz.tsx
 import React, { useState } from 'react';
+import { Card, CardContent, Button, Typography, Box, Alert } from '@mui/material';
 import { QuizQuestion } from '../../types/exercise';
 
 interface QuizProps {
@@ -9,67 +9,70 @@ interface QuizProps {
 
 export const Quiz: React.FC<QuizProps> = ({ questions, onComplete }) => {
   const [currentQuestion, setCurrentQuestion] = useState(0);
-  const [selectedAnswers, setSelectedAnswers] = useState<string[]>([]);
+  const [selectedAnswer, setSelectedAnswer] = useState<string | null>(null);
   const [showResults, setShowResults] = useState(false);
-
-  const handleAnswerSelect = (answer: string) => {
-    const newAnswers = [...selectedAnswers];
-    newAnswers[currentQuestion] = answer;
-    setSelectedAnswers(newAnswers);
-  };
+  const [score, setScore] = useState(0);
+  const [answers, setAnswers] = useState<string[]>([]);
 
   const handleNext = () => {
-    if (currentQuestion < questions.length - 1) {
-      setCurrentQuestion(currentQuestion + 1);
-    } else {
-      calculateResults();
-    }
-  };
+    if (selectedAnswer) {
+      const newAnswers = [...answers];
+      newAnswers[currentQuestion] = selectedAnswer;
+      setAnswers(newAnswers);
 
-  const calculateResults = () => {
-    let score = 0;
-    questions.forEach((question, index) => {
-      if (question.correctAnswer === selectedAnswers[index]) {
-        score++;
+      if (selectedAnswer === questions[currentQuestion].correctAnswer) {
+        setScore(score + 1);
       }
-    });
-    setShowResults(true);
-    onComplete(score);
+
+      if (currentQuestion < questions.length - 1) {
+        setCurrentQuestion(currentQuestion + 1);
+        setSelectedAnswer(null);
+      } else {
+        setShowResults(true);
+        onComplete(score + (selectedAnswer === questions[currentQuestion].correctAnswer ? 1 : 0));
+      }
+    }
   };
 
   if (showResults) {
     return (
-      <div>
-        <h2>Résultats du quiz</h2>
-        <p>Vous avez obtenu {selectedAnswers.filter((answer, index) => 
-          answer === questions[index].correctAnswer).length} / {questions.length} points</p>
-      </div>
+      <Alert severity="success">
+        <Typography variant="h5">Quiz terminé !</Typography>
+        <Typography variant="body1">Votre score est de {score} / {questions.length}</Typography>
+      </Alert>
     );
   }
 
   return (
-    <div>
-      <h2>Question {currentQuestion + 1} / {questions.length}</h2>
-      <p>{questions[currentQuestion].question}</p>
-      <div>
-        {questions[currentQuestion].options.map((option, index) => (
-          <button
-            key={index}
-            onClick={() => handleAnswerSelect(option)}
-            style={{
-              backgroundColor: selectedAnswers[currentQuestion] === option ? '#e0f7fa' : '#f5f5f5'
-            }}
-          >
-            {option}
-          </button>
-        ))}
-      </div>
-      <button 
-        onClick={handleNext} 
-        disabled={!selectedAnswers[currentQuestion]}
-      >
-        {currentQuestion < questions.length - 1 ? 'Suivant' : 'Terminer'}
-      </button>
-    </div>
+    <Card>
+      <CardContent>
+        <Typography variant="h6">
+          Question {currentQuestion + 1} / {questions.length}
+        </Typography>
+        <Typography variant="body1" sx={{ my: 2 }}>
+          {questions[currentQuestion].question}
+        </Typography>
+        <Box sx={{ display: 'flex', flexDirection: 'column', gap: 1 }}>
+          {questions[currentQuestion].options.map((option) => (
+            <Button
+              key={option}
+              variant={selectedAnswer === option ? "contained" : "outlined"}
+              onClick={() => setSelectedAnswer(option)}
+              sx={{ justifyContent: 'flex-start' }}
+            >
+              {option}
+            </Button>
+          ))}
+        </Box>
+        <Button
+          variant="contained"
+          onClick={handleNext}
+          disabled={!selectedAnswer}
+          sx={{ mt: 2 }}
+        >
+          {currentQuestion < questions.length - 1 ? 'Suivant' : 'Terminer'}
+        </Button>
+      </CardContent>
+    </Card>
   );
 };
