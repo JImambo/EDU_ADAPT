@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Generation quiz</title>
+</head>
+<body>
+    <h1>Generation quiz</h1>
+    <p>Cette page est dédiée à la génération de quiz à partir de documents PDF ou de texte brut. Vous pouvez télécharger un fichier PDF ou coller du texte, et l'IA générera des questions basées sur le contenu fourni.</p>
+    
+    
+    <input type="text" id="topic-input" placeholder="Entrez un sujet (ex: Sciences)"/><br>
+    <input type="file" id="pdfInput" accept="application/pdf">
+    <select>
+  <option value="resumer">résumé</option>
+  <option value="quiz">Quiz IA</option>
+  <option value="flashcards">Flashcards</option>
+   </select>
+   <br><br>
+   <button id="generate-btn">Generate</button>
+ 
+    <div id="quiz-container"></div>
+    <script src="app.js"></script>
+    
+</body>
+</html> 
