@@ -1,67 +1,106 @@
-# EDU_ADAPT
+# EduAdapt - Plateforme d'apprentissage personnalisée ![Statut du projet](https://img.shields.io/badge/status-en%20développement-orange)
 
-[![TypeScript](https://img.shields.io/badge/code-TypeScript-blue?style=flat)](https://www.typescriptlang.org/)
-[![CSS](https://img.shields.io/badge/style-CSS-green?style=flat)](https://developer.mozilla.org/fr/docs/Web/CSS)
-[![Build Status](https://img.shields.io/badge/build-passing-brightgreen?style=flat)]()
-[![License](https://img.shields.io/badge/license-MIT-lightgrey?style=flat)]()
+## Description courte
 
-> **EDU_ADAPT** — Une plateforme moderne, stylée et adaptative pour l'éducation numérique.
+EduAdapt est une plateforme innovante d’apprentissage personnalisée, inspirée de Microsoft AI Classroom et des initiatives d’éducation numérique européennes. Elle vise à révolutionner la façon dont les étudiants interagissent avec le contenu pédagogique grâce à l’Intelligence Artificielle.
 
 ---
 
-## 🚀 Fonctionnalités
+## Table des Matières
 
-- **Adaptive Learning** : Contenus dynamisés selon le parcours de l'utilisateur.
-- **Technologie Moderne** : Front-end développé principalement en TypeScript (94.1%), supporté par CSS, JavaScript et HTML.
-- **UI stylée** : Design graphique responsive et élégant.
-
----
-
-## 🖥️ Technologies utilisées
-
-| Langage       | Pourcentage | Description                          |
-|---------------|------------|--------------------------------------|
-| TypeScript    | 94.1%      | Logique principale de l'application  |
-| CSS           | 4%         | Styles, animations et responsive     |
-| JavaScript    | 1.2%       | Scripts additionnels                 |
-| HTML          | 0.7%       | Structure de la page                 |
+- [Problématique](#problématique)
+- [Stack Technique](#stack-technique)
+- [Fonctionnalités](#fonctionnalités)
+- [Impact Attendu](#impact-attendu)
+- [Livrables UML](#livrables-uml)
+- [Installation](#installation)
+- [Usage](#usage)
+- [Contributing](#contributing)
 
 ---
 
-## 📦 Installation
+## Problématique
+
+L’application EduAdapt transforme tout contenu éducatif statique (cours, documents, vidéos) en expériences interactives adaptées au niveau de chaque étudiant. 
+Elle génère automatiquement :
+- Quiz personnalisés
+- Flashcards intelligentes
+- Résumés progressifs
+
+Chaque expérience est ajustée selon le profil et l’évolution de l’élève, rendant l’apprentissage plus efficace et motivant.
+
+---
+
+## Stack Technique
+
+- **React** : Interface utilisateur dynamique et responsive
+- **Composants réutilisables** pour modularité et maintenabilité
+- **Intégration d’API IA (Ollama)** : génération de contenus adaptatifs (quiz, flashcards, résumés)
+- **Stockage local** des progrès étudiants
+- **Analytics** pour suivi de l’engagement et de la progression
+- **Gamification** : badges, scores, challenges
+- **Algorithmes adaptatifs** : recommandation automatisée de parcours et de contenus
+
+---
+
+## Fonctionnalités (Niveau Basique)
+
+- Conversion de contenu éducatif en quiz, flashcards et résumés interactifs
+- Création de profils étudiants
+- Suivi de la progression
+- Gamification simple (badges, scores)
+- Export des résultats
+- Visualisation d’analytics de base
+
+---
+
+## Impact Attendu
+
+- **Amélioration de 40% de la rétention d’information** chez les étudiants utilisant la plateforme
+- Personnalisation poussée de l’apprentissage
+- Gain de temps pour enseignants et élèves dans la préparation/revision
+
+---
+
+## Livrables UML
+
+Diagrammes inclus dans le dossier `/uml` :
+- Diagramme de cas d’utilisation
+- Diagramme de classes
+- Diagramme d’activités
+
+---
+
+## Installation
 
 ```bash
 git clone https://github.com/JImambo/EDU_ADAPT.git
 cd EDU_ADAPT
 npm install
+npm start
 ```
+_Nécessite Node.js et npm._
 
 ---
 
-## ⚡️ Démarrage rapide
+## Usage
 
-```bash
-npm run dev
-```
-
----
-
-## 🤝 Contribution
-
-Les contributions sont les bienvenues ! Pour tout bug, suggestion ou amélioration, ouvrez une issue ou proposez une pull request.
+- Importez un contenu éducatif (texte, vidéo ou PDF)
+- Sélectionnez le niveau de difficulté souhaité
+- Commencez l’expérience interactive !
+- Suivez vos progrès dans l’espace analytics
 
 ---
 
-## 🪪 Licence
+## Contributing
 
-Ce projet est sous licence MIT.
+Les contributions sont les bienvenues !
+- Forkez le projet
+- Créez une branche (`feature/ma-feature`)
+- Soumettez une Pull Request
+
+Merci de consulter le fichier `CONTRIBUTING.md` pour le guide complet.
 
 ---
 
-## 📫 Contact
-
-Pour toute question, n'hésitez pas à contacter le mainteneur [JImambo](https://github.com/JImambo).
-
----
-
-> _Stylé, moderne, efficace : EDU_ADAPT pour l'école de demain._
+_Copyright © 2025 JImambo & Contributeurs EDU_ADAPT_
