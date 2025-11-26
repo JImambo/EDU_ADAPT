@@ -6,15 +6,29 @@
         }
         
         body {
+          
             font-family: 'Google Sans', 'Roboto', sans-serif;
             background-color: #f5f7fa;
             color: #202124;
             line-height: 1.6;
         }
-        
+
         a {
             text-decoration: none;
             color: inherit;
+        }
+
+        button {
+            
+            background-color: #4285f4;
+            color: white;
+            border: none;
+            border-radius: 24px;
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            margin-bottom: 10px;
         }
         
         .poster-container {
