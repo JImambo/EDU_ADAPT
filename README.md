@@ -2,7 +2,7 @@
 
 ## Description courte
 
-EduAdapt est une plateforme innovante d’apprentissage personnalisée, inspirée de Microsoft AI Classroom et des initiatives d’éducation numérique européennes. Elle vise à révolutionner la façon dont les étudiants interagissent avec le contenu pédagogique grâce à l’Intelligence Artificielle.
+EduAdapt est une plateforme innovante d’apprentissage personnalisée, inspirée de Microsoft AI Classroom et des initiatives européennes. Elle exploite l’IA pour transformer rapidement tout contenu pédagogique en expériences interactives et adaptatives.
 
 ---
 
@@ -10,64 +10,108 @@ EduAdapt est une plateforme innovante d’apprentissage personnalisée, inspiré
 
 - [Problématique](#problématique)
 - [Stack Technique](#stack-technique)
-- [Fonctionnalités](#fonctionnalités)
+- [Architecture](#architecture)
+- [Fonctionnalités](#fonctionnalités-niveau-basique)
 - [Impact Attendu](#impact-attendu)
 - [Livrables UML](#livrables-uml)
+- [API & Composants](#api--composants)
 - [Installation](#installation)
 - [Usage](#usage)
 - [Contributing](#contributing)
+- [Licence](#licence)
 
 ---
 
 ## Problématique
 
-L’application EduAdapt transforme tout contenu éducatif statique (cours, documents, vidéos) en expériences interactives adaptées au niveau de chaque étudiant. 
-Elle génère automatiquement :
-- Quiz personnalisés
-- Flashcards intelligentes
-- Résumés progressifs
-
-Chaque expérience est ajustée selon le profil et l’évolution de l’élève, rendant l’apprentissage plus efficace et motivant.
+EduAdapt transforme le contenu éducatif (documents, PDF, vidéos) en expériences interactives adaptées au niveau et au profil de chaque étudiant, avec génération automatique de quiz, flashcards et résumés. Objectif : personnaliser et dynamiser l’apprentissage pour maximiser la rétention.
 
 ---
 
 ## Stack Technique
 
-- **React** : Interface utilisateur dynamique et responsive
-- **Composants réutilisables** pour modularité et maintenabilité
-- **Intégration d’API IA (Ollama)** : génération de contenus adaptatifs (quiz, flashcards, résumés)
-- **Stockage local** des progrès étudiants
-- **Analytics** pour suivi de l’engagement et de la progression
-- **Gamification** : badges, scores, challenges
-- **Algorithmes adaptatifs** : recommandation automatisée de parcours et de contenus
+- **Front-end**: React (TypeScript)
+  - Utilisation de hooks, context et composants réutilisables
+- **Back-end / IA** : Intégration d’API Ollama (génération, adaptation des contenus)
+- **Stockage local**: `localStorage`, `IndexedDB`
+- **Analytics** : suivi des interactions via Google Analytics ou outil personnalisé
+- **Gamification** : gestion de badges et niveaux (état stocké côté client)
+- **Algorithmes adaptatifs** : adaptation dynamique du contenu via scoring et tracking de performance
+
+**Langages principaux** :
+- TypeScript (50%)
+- HTML (28%)
+- CSS (21%)
+- JavaScript (1%)
+
+---
+
+## Architecture
+
+### Schéma simplifié
+
+```
+[UI React]
+     |
+[Composants d’interface] --- [Composant Quiz] / [Composant Flashcard] / [Composant Résumé]
+     |
+[Intégration API Ollama] <---> [Serveur IA pour génération de contenu adaptatif]
+     |
+[Stockage local] <--- [Progression, résultats, analytics]
+```
 
 ---
 
 ## Fonctionnalités (Niveau Basique)
 
-- Conversion de contenu éducatif en quiz, flashcards et résumés interactifs
-- Création de profils étudiants
-- Suivi de la progression
-- Gamification simple (badges, scores)
-- Export des résultats
-- Visualisation d’analytics de base
+- **Import** de contenu éducatif (PDF, texte, vidéo)
+- **Génération** automatique de :
+  - Quiz (QCM, vrai/faux, réponses courtes)
+  - Flashcards personnalisées
+  - Résumés intelligents
+- **Profil étudiant** : création et suivi, sauvegarde locale
+- **Analytics de base** : visualisation des progrès et des scores
+- **Gamification** : badges, scores, historique de challenges
 
 ---
 
 ## Impact Attendu
 
-- **Amélioration de 40% de la rétention d’information** chez les étudiants utilisant la plateforme
-- Personnalisation poussée de l’apprentissage
-- Gain de temps pour enseignants et élèves dans la préparation/revision
+- Amélioration estimée de **40% de la rétention d’information**
+- Personnalisation avancée et engagement accru
+- Automatisation du processus de création de supports d’apprentissage
 
 ---
 
 ## Livrables UML
 
-Diagrammes inclus dans le dossier `/uml` :
-- Diagramme de cas d’utilisation
-- Diagramme de classes
-- Diagramme d’activités
+Diagrammes disponibles dans le dossier `/uml` :
+- **Cas d’utilisation** : description des parcours utilisateur (enseignant, étudiant)
+- **Classes** : structure des composants principaux (Quiz, Flashcard, Résumé, API)
+- **Activités** : séquences des principales interactions (import, génération, scoring)
+
+---
+
+## API & Composants
+
+### Principaux composants
+
+- **QuizGenerator**: génère des quiz via Ollama, adapte le niveau
+- **FlashcardGenerator**: crée des flashcards interactives
+- **SummaryGenerator**: synthétise le contenu source
+- **StudentProfile**: gestion du profil et progression
+- **GamificationEngine**: attribution de badges, gestion des scores
+
+### Exemple d’intégration API (Ollama)
+
+```typescript
+const response = await fetch('/api/ollama/generate', {
+  method: 'POST',
+  body: JSON.stringify({ content: myLesson, type: "quiz" }),
+  headers: { 'Content-Type': 'application/json' }
+});
+const quizData = await response.json();
+```
 
 ---
 
@@ -85,21 +129,26 @@ _Nécessite Node.js et npm._
 
 ## Usage
 
-- Importez un contenu éducatif (texte, vidéo ou PDF)
-- Sélectionnez le niveau de difficulté souhaité
-- Commencez l’expérience interactive !
-- Suivez vos progrès dans l’espace analytics
+1. Démarrez l’application (`npm start`)
+2. Importez un contenu éducatif (texte, PDF, vidéo)
+3. Sélectionnez le niveau de difficulté
+4. Pratiquez avec les quiz, flashcards ou résumés générés
+5. Consultez vos scores, badges et progrès dans l’onglet Analytics
 
 ---
 
 ## Contributing
 
-Les contributions sont les bienvenues !
 - Forkez le projet
 - Créez une branche (`feature/ma-feature`)
 - Soumettez une Pull Request
+- Reportez-vous au fichier `CONTRIBUTING.md` pour plus de détails
 
-Merci de consulter le fichier `CONTRIBUTING.md` pour le guide complet.
+---
+
+## Licence
+
+Ce projet est ouvert sous licence MIT.
 
 ---
 
