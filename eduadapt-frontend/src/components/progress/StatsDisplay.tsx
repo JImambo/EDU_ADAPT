@@ -1,56 +1,47 @@
 import React from 'react';
-import { Card, CardContent, Typography } from '@mui/material';
-import Grid from '@mui/material/Unstable_Grid2';
-import { ProgressData } from '../../hooks/useProgress';
+import { Card, CardContent, Typography, Box } from '@mui/material';
 
 interface StatsDisplayProps {
-  progress: ProgressData;
+  progress: {
+    scores: { [key: string]: number };
+  };
   totalExercisesCount: number;
 }
 
 export const StatsDisplay: React.FC<StatsDisplayProps> = ({ progress, totalExercisesCount }) => {
-  const averageScore = Object.values(progress.scores).length > 0
-    ? Object.values(progress.scores).reduce((a, b) => a + b, 0) / Object.values(progress.scores).length
-    : 0;
+  // Calcule le score moyen
+  const scores = Object.values(progress.scores);
+  const averageScore = scores.length > 0 ? (scores.reduce((a, b) => a + b, 0) / scores.length) : 0;
 
   return (
-    <Grid container spacing={2} sx={{ mb: 2 }}>
-      <Grid item xs={12} sm={4}>
+    // On remplace <Grid container> par un <Box> en flexbox
+    <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: 2 }}>
+      {/* On remplace <Grid item> par un <Box> avec flexBasis pour la taille */}
+      <Box sx={{ flexGrow: 1, flexBasis: { xs: '100%', md: '50%' } }}>
         <Card>
           <CardContent>
-            <Typography color="textSecondary" gutterBottom>
-              Exercices complétés
+            <Typography variant="h6" component="h3" gutterBottom>
+              Score Moyen
             </Typography>
-            <Typography variant="h5">
-              {progress.completedExercises.length} / {totalExercisesCount}
+            <Typography variant="h4" component="p" color="primary.main">
+              {averageScore.toFixed(1)} / 100
             </Typography>
           </CardContent>
         </Card>
-      </Grid>
-      <Grid item xs={12} sm={4}>
+      </Box>
+
+      <Box sx={{ flexGrow: 1, flexBasis: { xs: '100%', md: '50%' } }}>
         <Card>
           <CardContent>
-            <Typography color="textSecondary" gutterBottom>
-              Score moyen
+            <Typography variant="h6" component="h3" gutterBottom>
+              Exercices Terminés
             </Typography>
-            <Typography variant="h5">
-              {averageScore.toFixed(1)} %
+            <Typography variant="h4" component="p" color="secondary.main">
+            {totalExercisesCount}
             </Typography>
           </CardContent>
         </Card>
-      </Grid>
-      <Grid item xs={12} sm={4}>
-        <Card>
-          <CardContent>
-            <Typography color="textSecondary" gutterBottom>
-              Temps total
-            </Typography>
-            <Typography variant="h5">
-              {Math.round(progress.totalTime / 60)} min
-            </Typography>
-          </CardContent>
-        </Card>
-      </Grid>
-    </Grid>
+      </Box>
+    </Box>
   );
 };

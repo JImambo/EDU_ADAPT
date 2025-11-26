@@ -1,7 +1,9 @@
+// src/services/api.ts
 import axios from 'axios';
 
 const api = axios.create({
-  baseURL: process.env.NEXT_PUBLIC_API_URL || '/api', // Utilise les routes API de Next.js
+  // CORRECTION : Utiliser import.meta.env et le préfixe VITE_ pour Vite
+  baseURL: import.meta.env.VITE_API_URL || '/api', 
   headers: {
     'Content-Type': 'application/json',
   },
