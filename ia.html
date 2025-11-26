@@ -3,8 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Génération IA — EduAdapt</title>
-    <link rel="stylesheet" href="/eduadapt-frontend/src/index.css">
+    <title>Génération IA — EduAdapt Ollama</title>
     <link rel="stylesheet" href="/eduadapt-frontend/src/ia.css">
 </head>
 <body>
@@ -37,7 +36,6 @@
                     <div class="action-row">
                         <button id="generate-btn">Générer</button>
                     </div>
-
                 </div>
 
                 <div id="quiz-container" class="result-area"></div>
@@ -45,6 +43,125 @@
         </div>
     </div>
 
-    <script src="app.js"></script>
+<script>
+const topicInput = document.getElementById('topic-input');
+const generateBtn = document.getElementById('generate-btn');
+const quizContainer = document.getElementById('quiz-container');
+const modeSelect = document.getElementById('mode-select');
+const pdfInput = document.getElementById('pdf-input');
+
+
+function extractJSON(text) {
+    const jsonMatch = text.match(/\{[\s\S]*\}|\[[\s\S]*\]/);
+    if (jsonMatch) return jsonMatch[0];
+    return text;
+}
+
+
+function displayResume(resume) {
+    quizContainer.innerHTML = `<h2>${resume.titre}</h2><p>${resume.contenu}</p><ul>${resume.points_cles.map(p => `<li>${p}</li>`).join('')}</ul>`;
+}
+
+function displayQuiz(quiz) {
+    quizContainer.innerHTML = quiz.map((q, i) => `<p>${i+1}. ${q.question}<br>Réponses: ${q.options.join(', ')}</p>`).join('');
+}
+
+function displayFlashcards(flashcards) {
+    quizContainer.innerHTML = flashcards.map(f => `<p><strong>${f.question}</strong><br>${f.answer}</p>`).join('');
+}
+
+
+async function readPDF(file) {
+    if (!file) return '';
+    const arrayBuffer = await file.arrayBuffer();
+    const pdfjsLib = window['pdfjs-dist/build/pdf'];
+    pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.9.179/pdf.worker.min.js';
+    const pdf = await pdfjsLib.getDocument(arrayBuffer).promise;
+    let text = '';
+    for (let i = 1; i <= pdf.numPages; i++) {
+        const page = await pdf.getPage(i);
+        const content = await page.getTextContent();
+        text += content.items.map(item => item.str).join(' ') + ' ';
+    }
+    return text;
+}
+
+
+generateBtn.addEventListener('click', generateContent);
+
+async function generateContent() {
+    const topicText = topicInput.value;
+    const mode = modeSelect.value;
+
+    if (!topicText && !pdfInput.files.length) {
+        alert('Veuillez entrer un sujet ou sélectionner un PDF !');
+        return;
+    }
+
+    quizContainer.innerHTML = 'Génération en cours...';
+
+    let prompt = topicText;
+
+    
+    if (pdfInput.files.length) {
+        const pdfText = await readPDF(pdfInput.files[0]);
+        prompt = pdfText || topicText;
+    }
+
+    
+    if (mode === 'resumer') {
+        prompt = `Fais un résumé clair du texte suivant : "${prompt}". Répond UNIQUEMENT avec un JSON: {"titre": "...", "contenu": "...", "points_cles": [...]}`;
+    } else if (mode === 'quiz') {
+        prompt = `Génère un quiz de 10 questions sur le texte suivant : "${prompt}". Répond UNIQUEMENT avec un JSON: {"quiz":[...]}`;
+    } else if (mode === 'flashcards') {
+        prompt = `Génère 10 flashcards sur le texte suivant : "${prompt}". Répond UNIQUEMENT avec un JSON: {"flashcards":[...]}`;
+    }
+
+    try {
+        const response = await fetch("http://localhost:11434/api/generate", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ model: "llama3.1", prompt })
+        });
+
+        
+        const reader = response.body.getReader();
+        const decoder = new TextDecoder();
+        let fullText = "";
+
+        while (true) {
+            const { done, value } = await reader.read();
+            if (done) break;
+            fullText += decoder.decode(value);
+        }
+
+        
+        const lines = fullText.trim().split("\n");
+        let combinedResponse = "";
+        for (let line of lines) {
+            if (!line) continue;
+            const obj = JSON.parse(line);
+            if (obj.response) combinedResponse += obj.response;
+        }
+
+        
+        const cleanJSON = extractJSON(combinedResponse);
+        const result = JSON.parse(cleanJSON);
+
+        
+        if (mode === 'resumer') displayResume(result);
+        else if (mode === 'quiz') displayQuiz(result.quiz);
+        else if (mode === 'flashcards') displayFlashcards(result.flashcards);
+
+    } catch (error) {
+        console.error("Erreur:", error);
+        quizContainer.innerHTML = "Une erreur est survenue. Réessaye.";
+    }
+}
+</script>
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.9.179/pdf.min.js"></script>
+
 </body>
 </html>
