@@ -6,10 +6,29 @@
         }
         
         body {
+          
             font-family: 'Google Sans', 'Roboto', sans-serif;
             background-color: #f5f7fa;
             color: #202124;
             line-height: 1.6;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        button {
+            
+            background-color: #4285f4;
+            color: white;
+            border: none;
+            border-radius: 24px;
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            margin-bottom: 10px;
         }
         
         .poster-container {
@@ -327,4 +346,27 @@
             font-size: 14px;
             position: relative;
             z-index: 1;
+        }
+
+           /* Styles pour rendre la page responsive */
+        @media (max-width: 768px) {
+            .poster-container {
+                padding: 20px;
+                text-align: center;
+            }
+            .header {
+                flex-direction: column;
+            }
+            .btn-connexion {
+                margin: 20px 0;
+            }
+            .section {
+                margin: 10px 0;
+            }
+            .section-title {
+                font-size: 1.5em;
+            }
+            .section-content {
+                font-size: 0.9em;
+            }
         }
