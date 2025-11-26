@@ -12,6 +12,11 @@
             line-height: 1.6;
         }
         
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+        
         .poster-container {
             width: 720px;
             min-height: 1600px;
