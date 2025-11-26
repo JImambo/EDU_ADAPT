@@ -22,3 +22,10 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+# Vérifier si .gitignore existe
+if (!(Test-Path .gitignore)) {
+    New-Item .gitignore
+}
+
+# Ajouter .env au gitignore
+Add-Content .gitignore "`n.env`n*.env"
