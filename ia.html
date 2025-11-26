@@ -1,27 +1,50 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Generation quiz</title>
+    <title>Génération IA — EduAdapt</title>
+    <link rel="stylesheet" href="/eduadapt-frontend/src/index.css">
+    <link rel="stylesheet" href="/eduadapt-frontend/src/ia.css">
 </head>
 <body>
-    <h1>Generation quiz</h1>
-    <p>Cette page est dédiée à la génération de quiz à partir de documents PDF ou de texte brut. Vous pouvez télécharger un fichier PDF ou coller du texte, et l'IA générera des questions basées sur le contenu fourni.</p>
-    
-    
-    <input type="text" id="topic-input" placeholder="Entrez un sujet (ex: Sciences)"/><br>
-    <input type="file" id="pdfInput" accept="application/pdf">
-    <select>
-  <option value="resumer">résumé</option>
-  <option value="quiz">Quiz IA</option>
-  <option value="flashcards">Flashcards</option>
-   </select>
-   <br><br>
-   <button id="generate-btn">Generate</button>
- 
-    <div id="quiz-container"></div>
+    <div class="poster-container ia-container">
+        <div class="section">
+            <h2 class="section-title">
+                <span class="material-icons">upload_file</span>
+                Importation & Génération IA
+            </h2>
+            <div class="section-content">
+                <p>Générez un résumé, un quiz ou des flashcards à partir d'un texte ou d'un fichier PDF.</p>
+
+                <div class="controls">
+                    <input type="text" id="topic-input" placeholder="Entrez un sujet ou collez un extrait de texte" />
+
+                    <div class="file-row">
+                        <label class="file-label">Choisir un PDF (optionnel)</label>
+                        <input type="file" id="pdf-input" accept="application/pdf" />
+                    </div>
+
+                    <div class="mode-row">
+                        <label for="mode-select">Mode :</label>
+                        <select id="mode-select">
+                            <option value="resumer">Résumé</option>
+                            <option value="quiz">Quiz IA</option>
+                            <option value="flashcards">Flashcards</option>
+                        </select>
+                    </div>
+
+                    <div class="action-row">
+                        <button id="generate-btn">Générer</button>
+                    </div>
+
+                </div>
+
+                <div id="quiz-container" class="result-area"></div>
+            </div>
+        </div>
+    </div>
+
     <script src="app.js"></script>
-    
 </body>
-</html> 
+</html>

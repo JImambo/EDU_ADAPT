@@ -1,0 +1,108 @@
+/* Styles spécifiques pour la page IA — simple et cohérent avec index.css */
+.ia-container {
+  max-width: 720px;
+  margin: 20px auto 60px;
+  padding: 20px;
+}
+
+.controls {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-top: 12px;
+}
+
+.controls input[type="text"],
+.controls select {
+  width: 100%;
+  padding: 10px 12px;
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  font-size: 15px;
+  color: #202124;
+}
+
+.file-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.file-label {
+  font-size: 14px;
+  color: #5f6368;
+}
+
+.action-row {
+  display: flex;
+  justify-content: flex-start;
+}
+
+.result-area {
+  margin-top: 18px;
+}
+
+.question-block {
+  background: #ffffff;
+  border: 1px solid #e6eefc;
+  border-radius: 8px;
+  padding: 12px 14px;
+  margin-bottom: 12px;
+}
+
+.question-block h3 {
+  font-size: 16px;
+  margin-bottom: 8px;
+}
+
+.question-block label {
+  display: block;
+  margin-bottom: 6px;
+  font-size: 15px;
+  cursor: pointer;
+}
+
+.question-block input[type="radio"] {
+  margin-right: 8px;
+}
+
+/* Flashcards */
+.flashcard-card {
+  background: #fff;
+  border-radius: 10px;
+  padding: 20px;
+  border: 1px solid #e0eafc;
+  text-align: center;
+}
+
+.flashcard-card h2 {
+  margin-bottom: 12px;
+}
+
+.result-area .nav-buttons {
+  margin-top: 10px;
+  display: flex;
+  gap: 8px;
+  justify-content: center;
+}
+
+/* Boutons plus discrets pour l'UI IA */
+button {
+  background-color: #4285f4;
+  color: #fff;
+  border: none;
+  padding: 10px 16px;
+  border-radius: 20px;
+  cursor: pointer;
+}
+
+button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+/* Responsivité simple */
+@media (max-width: 800px) {
+  .ia-container { width: 94%; padding: 16px; }
+  .poster-container { padding: 18px; }
+}
