@@ -1,0 +1,10 @@
+﻿# Fichiers d'environnement
+.env
+*.env
+api.env
+*.api.env
+
+# Frontend
+node_modules/
+dist/
+build/
